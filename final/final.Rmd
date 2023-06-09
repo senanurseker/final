@@ -1,0 +1,139 @@
+---
+title: "Dünya Ülkelerinin Mutluluk Düzeyleri Endeksi"
+author: 
+  - Sena Nur Şeker[^1]
+bibliography: ../bibliography/biblio.bib
+csl: ../csl/apa-tr.csl
+header-includes:
+  - \usepackage{polyglossia}
+  - \setmainlanguage{turkish}
+  - \usepackage{booktabs}
+  - \usepackage{caption} 
+  - \captionsetup[table]{skip=10pt}
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 4
+    keep_tex: no
+    latex_engine: xelatex
+    number_sections: yes
+    toc: no
+geometry: margin=1in
+link-citations: yes
+urlcolor: blue
+fontsize: 12pt
+biblio-style: apalike
+abstract: |
+  Günümüz politikları insan verimliliği ve iş motivasyonu için insanların mutluluklarını artırıcı yönde hedeflenmektedir. Toplumun başta sağlık ve refahlarının yüksek olması en büyük etkenlerdir. Buna karşın dünyanın her yerindeki insanların mutluluklarının dengesiz dağılması ve eşitsiliği diğer faktörler aracılığıyla da incelenmektedir. Çünkü mutluluk sonradan oluşan belki saatlik belki anlık değişen bir duygudur. Bu çalışmada değişen çalışmalara ve araştırmalar taranmdı ve belirli sonuçlar ortaya konulmuştur. Bu çalışmada ANOVA analizini kullanarak değişkenlerin (insan başına gayri safi yurt içi hasıla, doğum oranları, ölüm oranları, devlet yardımı, işsizlik,enflasyon vb.) insan üzerinde nasıl etki gösterdiği gözlenmiştir. Dünya üzerinde farklı bölgelerdeki ülkelerin yaşam standartaları ve hayat şartlarına göre değişiklik gösterdiği kanıtlanmıştır. ANOVA analizi sonucu olarak fırsat eşitsizliğinin yüksek olduğu ülkelerde örneğin devlet desteği çok kıt ve gayri safi hasılanın düşük ise mutluluk oranında ciddi bir düşüş var demektir, örneğin Afrika ülkeleridir. Batı Avrupa ülkelerinde ise durum tam tersi yaşam kalitesi ve insan refahı çok yüksek olduğu için mutluluk yüksek çıkmıştır. Bunu araştırmamızda net bir şekilde gözlemlemekteyiz. Bu durumda sosyal devlet anlayışının ,soyal çevreci politikaların artması fırsat eşitsizliğinin önüne geçmek için gereklidir.
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- ======================================================================= -->
+<!-- ============================== NOTLAR ================================= -->
+<!-- ======================================================================= -->
+[^1]: 21080290, [Github Repo](https://github.com/senanurseker/final)
+
+
+# Giriş
+Tüm insanlığın ortak amacı olan mutluluk, farklı alanlarda farklı bilim dallarında araştırılan bir duygudur. Tüm insanlığın elde etmeye çalıştığı ancak net bir açıklaması olmayan mutluluk kavramı birçok disiplin için de var olmaktadır. Mutluluk algısı kişiden kişiye değişmekte, insanların hayat koşullarına standartlarına göre farklılık göstermektedir. İnsanoğlu geçmişten bu yana mutluluk adı altında belirli standartları yakalamaya çalışmaktadır.
+
+Mutluluk yakın geçmişe kadar psikoloji alanı altında işlenen bir konu olmuştur. Ancak görüyoruz ki mutluluk endeksi farklı bölgelerde yaşam kalitesiyle alakalı olarak değişiklik gösteriyor. Bu da bize gelir eşitsizliği,politik ortam, sosyal çevre faktörlerinin günümüzde etkisinin daha fazla olduğunu göstermektedir. Bu faktörler bazı yönleriyle olumlu bazı yönleriyle olumsuz sonuçlar doğurabilmektedir. 
+
+Mutluluğun ölçülmesine ilişkin çeşitli ölçekler,istatistikler belirli periyodlara uygun bir şekilde yayımlanmaktadır. Dünya Mutluluk Raporu son on yıldır 150’ den fazla bireylerin hayat memnuniyetini ölçüyor. Mutluluk raporu, mevcut verileri sunmuş ve ortaya çıkan mutluluk endeksleri ile ilgili kanıtları inceleyip insanların yaşam standartlarının etkilerine bakmışlardır. Katılımcılara merdiven basamağı gibi düşünecekleri bir çizelge verilmiş. Merdivenin en alt basamağı mümkün olan en kötü yaşamı değerlendirilmesi için 0’ı, en üst basamağı için mümkün olan en iyi yaşamı değerlendirilmesi için 10’u simgesel olarak kullanmaları istenmiştir. on simgelendiği belirtilmiş0 en üst basamağı 10 olacak şekilde ayarlanmış. Katılımcını şu an ki yaşamını konumlandırdığı basamak anket sonucu oluyor. Dünya Mutluluk Raporu’nda bulunan ülkeler birçok veri ve faktörden oluşmasına rağmen tek bir endekse göre sıralanır. Günümüze yakın biz zamanda ortaya çıkan yaşam değerlendirilmesi için altı değişken üzerinde çalışılıyor. Bunlar; kişi başı GSYH, doğumda beklenen yaşam süresi, cömertlik, sosyal destek, hayat hakkında seçim yapma özgürlüğü, yolsuzluk algıları. Sosyal ölçütlerin böylece mutluluk üzerinde oldukça etkili olduğunu görüyoruz. Raporlarda kulllanılan değişkenler, araştırma literatüründe ulusal düzeydeki farklılıkları açıklayan belirleyicileri yansıtmaktadır.
+
+## Çalışmanın Amacı
+Bu çalışmanın amacı Ülkelerin 2015-2022 yılları arasındaki mutluluk üzerinde etkisi olduğu bildiğimiz; kişi başı milli gelir ve alım gücü, sağlıklı yaşam, sosyal hayat, ileriye dönük yaşam beklentisi, güven ortamı, özgürlük vb. faktörlerin bölgesel etkenleri dahil ederek incelemek. Bu anlamda mutluluk bölgesel olarak değişiklik göstermektedir. Bu değişikliğin sebepleri verilerle ortaya koyulacaktır.
+
+## Literatür 
+
+Mutluluk kavramının genel iktisadi yapısı kalkınma politikası kapsamında incelenmektedir. Kalkınma politikalarında geleneksel yaklaşımın benimsediği temel prensip kişilerin ya da hane halklarının gelirinin arttırılması şeklindedir. Bu görüş, gelir düzeyinde meydana gelecek artışın tüketimi arttıracağı, böylece bireyin hayat kalitesini yükselteceği yönündedir. Çağdaş yaklaşımda ise kalkınmanın hedefi geliri arttırmanın yanı sıra refah olgusunun sağlanmasıdır(@Öndes:2019).Mutluluk kavramı, bireyin bir bütün olarak hayatından zevk alma düzeyi şeklinde ifade edilebilmektedir. Mutluluk, bireyin tüm yaşantısının bir değerlendirmesi olarak açıklanmaktadır. Tüm yaşamın değerlendirilmesi, kişilerin akıllarında şekillendirdikleri bütün unsurları içermektedir. Bireyin nasıl hissettiği, beklentilerini ne denli karşıladığı gibi tüm unsurlar, bu bağlamda değerlendirilmektedir (@vatansever:2017). Bundandır ki tarihten bu yana filozoflar mutluluğu aramış ve ortak bir hedef için çalışmışlardır. Yunan felsefesinde birçok düşünürün ilgisini çeken “mutluluk “kavramı için farklı tanımlamalar yapılmış ve mutluluğa ulaşma yolları araştırılmıştır. Bu dönem “mutluluk” için farklı tanımlamalar bulunmakla birlikte başta Aristo ve Plato olmak üzere birçok filozof “Eudaimonia” kelimesini kullanmışlardır. Eski Yunan medeniyetinde öze etki eden ruhsal durumu ifade eden bu kavram varlıklı, mutlu ve sağlıklı olma halini ifade etmektedir (@Veenhoven&Dumludağ:2015). 
+
+Mutluluk ve gelir arasındaki ilişkiyi ele alan kapsamlı çalışmalardan biri @Reder:1974 'in çalışmasıdır. @Reder:1974,"Nations and Households in Economic Growth" adlı kitabının “Does Economic Growth Improve the Human Lot? Some Empirical Evidence” isimli bölümünde mutluluk ve gelir arasındaki ilişkiyi ele aldığı çalışmasında farklı açılardan mutluluk ve gelir arasındaki ilişkiyi incelemiştir. @Reder:1974 14 ülkenin gelir ve mutluluk seviyelerine ilişkin verilerle bir karşılaştırma yapmıştır. Veriler nispeten gelişmiş ülkelerde mutluluk seviyesinin daha yüksek olduğunu göstermektedir.
+
+# Veri 
+Bu çalışmada 2015-2022 yılları arasında oluşan mutluluk veri seti kullanılmıştır. Günümüzde insanın daha mutlu ve yaşamından daha memnun olarak hayatını sürdürmesi kamu politikasının da önemli amaçlarından birini oluşturmaktadır. Nitekim, geleneksel anlayışa göre kişi başına milli gelir seviyesi ile ölçülen toplumsal refah anlayışı günümüzde yerini mutluluk ve yaşam memnuniyetine bırakmış ve böylelikle, iktisat ve maliye politikalarının da temel hedeflerinden biri insanların daha mutlu yaşaması ve sürdürdüğü yaşamdan memnuniyet duyması olmuştur (@Akman:2021). Bu çalışmada değişkenlerin nasıl sonuçları doğurduğunu incelemek için grafiklerden yardım alınmıştır. Bu veri seti The World Bank'ın databank sitesinden alınmıştır. Veri setinde mutluluğu etkilediği düşünülen faktörlere (borçlar,gelir,nüfus artışı vb.) yer verilmiştir. Toplamda 150'ye yakın gözlemden ve 20 değişkenden oluşmaktadır. Kullanılan veri setinde analizi kolaylaştırmak adına ufak değişiklikler yapılmakta olup sayılarla herhangi bir oynama yapılmamıştır.
+
+```{r include=FALSE}
+library(tidyverse)
+library(here)
+whr <- read_csv(here("../data/whr.csv"))
+```
+
+```{r, echo=FALSE}
+library(xtable) 
+library(summarytools)
+st_options(lang = "tr")
+```
+
+```{r results='asis', echo=FALSE}
+whr %>%
+  select("LoggedGDPpercapita", "Ladderscore", "Healthy life expectancy", "Socialsupport") %>% 
+  descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
+  xtable(caption = "Özet İstatistikler",
+         label = "tab:ozet",
+         align = c("l", "c", "c", "c", "c", "c")) %>% 
+  print(booktabs = TRUE, comment = FALSE, caption.placement = "top")
+```
+
+Tablo \ref{tab:ozet}, mutluluk oranlarını etkileyen: doğumda bekleyen yaşam süresi, genel devlet nihai tüketim harcaması, gayri safir yurt içi tasarruf, brüt sermaye oluşumu’ nun; ortalama değerlerini, minimum, medyan ile maksimum değerlerini ve standart sapmalarını göstermektedir. Tablo \ref{tab:ozet}’ de görüldüğü üzere mutluluğu en çok etkileyen sebep istatistiğinde en yüksek değere sahip olan doğumda bekleyen yaşam süresidir. Görüyoruz ki insanlar için yaşam diğer etkenlerin üzerinde, doğumda beklenen yaşam süresinin peşine insanların mutluluklarını etkileyen ikinci çok önemli etken gayri safi yurt içi hasıladır. Bu insanların refah bir hayat geçirmeleri ve doğrudan mutluluklarını ne kadar çok etkilediği gözler önüne sermektedir. En düşük oranın ise devlet nihai tüketim harcaması olduğunu görmekteyiz.
+
+# Yöntem ve Veri Analizi
+
+```{r scatterplot, fig.align='center', fig.cap='İktidara Olan Güvenin Gelir Düzeyine Etkisi', echo=FALSE}
+ggplot(whr, aes(x=Generosity, y=LoggedGDPpercapita, color=Regionalindicator)) +
+    geom_point() +
+    theme(legend.position="none")
+```
+
+Şekil \@ref(fig:scatterplot)’de iktidara olan güvenin gelir düzeyine etkisi grafikleştirilmiştir. Dikey eksende ülkedeki kişi başına düşen Gayrisafi Yurt İçi Hasıla ve yatay eksene insanların iktidara olan güven verileri yerleştirilmiştir. Grafikte görüldüğü üzere güven azaldıkça GDP’nin düştüğü gözlemlenmektedir.Her farklı renk bir bölgeyi göstermektedir.
+
+```{r boxplot, fig.align='center', fig.cap='Bölgelere Göre Merdiven Skoru', echo=FALSE}
+boxplot(whr$Ladderscore ~ whr$Regionalindicator,
+         las = "2",
+         xlab = " ",
+         ylab = "Ladderscore",
+         main = "Bölgelere Göre Merdiven Skoru")
+```
+
+Şekil \@ref(fig:boxplot)'de veri setindeki değişkenlerin veri setinde belirtilen bölgelerde nasıl değişiklik gösterdiğini görmekteyiz. Grafikteki bölgelerde (Eastern Europe, Commonwealth of Independent States, East Asia, Latin America and the Caribbean, Middle Eastern and North African, North America and Anz, South Asia, Sub Saharan Africa, Western Europe) anlaşıldığı gibi en mutlu ülkelere sahip olan bölge Batı Avrupa’dır. Batı avrupa ülkelerinin mutlu olma sebebi belirtilen etmenleri daha yüksek olmasıdır. Doğu Avrupa onun oranından daha düşüktür. En düşük skora sahip bölge Sahra Altı Afrika’dır. Diğer bölgeler ortalama olarak gözükmektedir.
+
+ANOVA (Analysis of Variance), İki ya da daha çok evrene ait ortalamaların karşılaştırılmasını sağlayan analiz yöntemidir. Veri setindeki değişkenler göz önünde bulundurulduğunda Tek yönlü ANOVA, ANCOVA vb. çeşitleri bulunmaktadır. Bu çalışmada bölgeler ve onların puanlarıyla ilgili gözlemler kullanıldığı için Tek Yönlü ANOVA Analizi Kullanılması öngörülmüştür. Tek Yönlü ANOVA, Çoklu örneklem ortalamaları arasındaki değişkenlik, çoklu örneklemler içindeki değişimle karşılaştırır (@Tavşancıl:2018). 
+
+Analizde yalnız ölçülebilen değişken etkileri araştırılıyorsa çoklu regresyon analizi, hem ölçülebilen hem de ölçülemeyen bağımsız değişkenlerin etkileri araştırılırsa kovaryans analizi yapılmaktadır. Ayrıca çoklu regresyon analizi ile de ölçülebilen ve ölçülemeyen değişkenlerin bağımlı değişken üzerindeki etkisi, ölçülmeyen değişkenin “dummy” değişken olarak tanıtılmasıyla analize dahil edilir. Tek faktörlü varyans analizinde bir bağımsız değişken ve bir bağımlı değişken vardır. İki faktörlü varyans analizinde ise iki bağımsız değişken ve bir bağımlı değişken yer almaktadır. Burada temel amaç, bağımsız değişkenlerin bağımlı değişkenler üzerindeki ortak etkisinin araştırılmasıdır. 
+
+Varyans analizinin uygulanabilmesi için örneklem ana kütlesinin sahip olması gereken bazı özellikler bulunmaktadır. Her bir grubun normal dağılım sergilemesi, örneklerin bağımsız ve varyanslarının eşit olması istenmektedir. F testi hipotezi oluşturulur.
+
+Varyans analizinde temel amaç, ikiden fazla örnek için örnek ortalamalarının genel ortalamadan sapmalarının kareler toplamını, sapmaya yol açan etkileri ayırmak ve analiz etmektir. İki faktörlü varyans analizi yapılır. İki faktörlü varyans analizinde ise üç ayrı test işlemi yapılarak analiz gerçekleştirilir (@Ervural:2020).
+
+Öncelikle, iki faktör bütün olarak anlamlı bir etkiye sahip mi bu durum incelenir. Ardından ortak etkinin (interaction effect) anlamlılığı araştırılır. Bu aşamada F değeri bulunmaktadır. Ortak etki anlamlı ise faktörlerin birbirleri üzerinde anlamlı bir etkiye sahip olduğu söylenebilir. Daha sonra her bir değişken ana etkisi (main effects) araştırılır. Burada Sabit Etkiler Modeli'ne göre F değerleri hesaplanır. Tek Yönlü ANOVA Analizi'nin genel denklemi şu şekildedir:
+
+$$
+Yi = m(X_i) + \epsilon i, i=1,2,...,n
+$$
+
+Bu bilgiler ışığında Tek Yönlü ANOVA analizini veri setine uyguladığımızda bir 'p' değeri elde ederiz.
+
+```{r aov, echo=FALSE}
+whr.aov <- aov(Ladderscore ~ Regionalindicator, data = whr) 
+oneway.test(Ladderscore ~ Regionalindicator, data = whr, var.equal = TRUE)
+```
+
+Analizi ilerlettiğimiz zaman F değerini elde ederiz. F dağılımı, sürekli bir dağılımdır. Aynı normal evrenden seçilen veya aynı varyansa sahip normal evrenlerden seçildiği varsayılan iki örnekleme ait varyansların birbirine oranının 1' eşit olması beklenir. Bu hesaplanan oran her zaman 1’e eşit olmaz ve bir dağılım gösterirken bu değer 0 ile sonsuz arasındadır. Bu ora varyansların oranlanması ve serbestlik derecesine bağlıdır.
+
+```{r summary, echo=FALSE}
+summary(whr.aov)
+```
+
+Bu analiz sonucunda elde edilen çıktılar her ne kadar bize yeterli bilgiyi verse de grupları kategorize edemez. Bu kategorizasyon için 1953 yılında J.W. Tukey tarafından bulunmuş olan Tukey testi yapılır (@Bülbül:2000).
+
+# Sonuç
+Mutluluk insanın temel varoluşsal bir duygusu olduğundan ötürü yıllarca araştırmalara konu olmuş bir alandır. Devlet, özel şirketler, kurum ve kuruluşlar ;çalışanları için, halk için mutluluğu ölçen testler ve parametreler geliştirmiş ve bunu uygulamışlardır. Böylece mutluluk duygusunu sayılarla daha anlaşılır rasyonel bir hale getirmişleridir. Böylelikle yetkili insanlar bu konu üzerinde çeşitli politikalarla daha yaşanası bir yaşam ve insanların mutluluklarını artırıcı yönde çalışmalar uygulanmıştır. Bu çalışmada ; Dünya Mutluluk Raporu verileri yardımıyla ülkelerin mutluluğunu etkileyen etmenleri daha anlaşılır bir şekilde aktarılmaya çalışılmıştır. Mutluluk düzeyinin farklılıkları ortaya konmuş ve mutluluğu etkileyen değişkenler belirlenmeye çalışılmıştır. Bu kapsamda Tek Yönlü ANOVA Analizi kullanılmıştır.
+Görmekteyiz ki işsizliğin,enflasyonun, ölüm oranlarındaki fazlalığının mutluluk oranını düşürdüğünü fakat gayrı safi hasılanın artışı, öğrenci başına devlet harcamasının fazlalığı, doğumda beklenen yaşam süresinin uzunluğu oranları da mutluluk oranlarını yükseltiğini gözlemledik.
+
+\newpage
+# Kaynakça {#references}
+<div id="refs"></div>
+
